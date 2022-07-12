@@ -293,6 +293,7 @@ exports.config = {
 	 * @param {<Object>} results object containing test results
 	 */
 	onComplete: function (exitCode, config, capabilities, results) {
+		
 		//const reportError = new Error('Could not generate Allure report');
 		const generation = allure([
 			'generate',

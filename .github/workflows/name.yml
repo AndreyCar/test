@@ -14,12 +14,9 @@ jobs:
             - run: npm ci #      - run: npm config set script-shell "C:\Program Files\Git\bin\bash.exe"
             - name: run test
               run: npm run test:headless # Our name of the headless script
-            - name: Copy History
-              if: always()
-              run: cp -r $(pwd)/docs/history/. $(pwd)/allure-results/history
-            - name: Generate Report
-              if: always()
-              run: npm run allure:generate # Name of the allure generate script
+            # - name: Copy History
+            #   if: always()
+            #   run: cp -r $(pwd)/docs/history/. $(pwd)/reports/allure-results/history
             - name: Upload Results
               uses: actions/upload-artifact@v1
               if: always()
@@ -31,22 +28,22 @@ jobs:
               if: always()
               with:
                   name: allure-report
-                  path: allure-report
+                  path: ./reports/allure-report
             - name: Deploy report
               uses: JamesIves/github-pages-deploy-action@4.1.4
               if: always()
               with:
                   branch: main # The branch the action should deploy to.
-                  folder: allure-report # The folder the action should deploy.
+                  folder: ./reports/allure-report # The folder the action should deploy.
                   target-folder: docs
-            - name: Pushes docs to another repository
-              uses: cpina/github-action-push-to-another-repository@v1.3
-              if: always()
-              env:
-                  API_TOKEN_GITHUB: ${{ secrets.TEST }} # Instruction where to get token is below
-              with:
-                  source-directory: 'docs'
-                  destination-github-username: 'username' # Your username
-                  destination-repository-name: 'reponame' # Name of your repo
-                  user-email: user@gmail.com # Your email
-                  target-branch: main
+            # - name: Pushes docs to another repository
+            #   uses: cpina/github-action-push-to-another-repository@v1.3
+            #   if: always()
+            #   env:
+            #       API_TOKEN_GITHUB: ${{ secrets.TEST }} # Instruction where to get token is below
+            #   with:
+            #       source-directory: 'docs'
+            #       destination-github-username: 'And' # Your username
+            #       destination-repository-name: 'reponame' # Name of your repo
+            #       user-email: user@gmail.com # Your email
+            #       target-branch: main

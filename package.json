@@ -14,7 +14,7 @@
     "scripts": {
         "wdio": "npx wdio run wdio.conf.js",
         "report": "allure open ./reports/allure-report",
-        "test:headles": "npx wdio wdio.chrome.headles.conf.js"
+        "test:headless": "npx wdio wdio.chrome.headless.conf.js --spec test/specs/example.e2e.js"
     },
     "dependencies": {
         "allure-commandline": "^2.18.1"
