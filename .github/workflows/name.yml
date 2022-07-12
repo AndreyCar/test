@@ -2,7 +2,7 @@ name: Main Github Actions
 on:
     push:
         branches:
-            - 'master' # Set branch of the GH repo to push
+            - 'main' # Set branch of the GH repo to push
 jobs:
     test_suite: # Name of the job
         runs-on: ubuntu-20.04 # Choosing OS
@@ -36,7 +36,7 @@ jobs:
               uses: JamesIves/github-pages-deploy-action@4.1.4
               if: always()
               with:
-                  branch: master # The branch the action should deploy to.
+                  branch: main # The branch the action should deploy to.
                   folder: allure-report # The folder the action should deploy.
                   target-folder: docs
             - name: Pushes docs to another repository
