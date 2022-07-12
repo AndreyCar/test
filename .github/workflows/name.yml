@@ -35,7 +35,6 @@ jobs:
               with:
                   branch: main # The branch the action should deploy to.
                   folder: ./reports/allure-report # The folder the action should deploy.
-                  target-folder: docs
             # - name: Pushes docs to another repository
             #   uses: cpina/github-action-push-to-another-repository@v1.3
             #   if: always()
